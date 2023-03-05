@@ -1,0 +1,92 @@
+*cspicker.txt*    A simple color scheme picker for Vim/Neovim.
+
+
+CONTENTS                                                        *cspicker-help*
+=============================================================================
+
+  USAGE ................................ cspicker-usage
+    FUNCTIONS ............................ cspicker-func
+    COMMANDS ............................. cspicker-commands
+  FAQ .................................. cspicker-faq
+  LICENSE .............................. cspicker-license
+  CREDITS .............................. cspicker-credits
+
+
+USAGE                                                          *cspicker-usage*
+=============================================================================
+
+Functions:                                                      *cspicker-func*
+  *cspicker#pick(...)*
+    If passed no argument, this command will open a window and populate
+    an associated buffer with all available color schemes. If passed an
+    argument, that argument will be interpreted as the name of a file to
+    open and the picker buffer will be populated with its contents. Such
+    a file should contain a list of color schemes, one per line.
+
+    Switching between lines in the opened buffer will preview each color
+    scheme (if the name on the line is a valid color scheme). Closing
+    the buffer will revert to the original color scheme (if possible;
+    poorly maintained color schemes do not set `g:colors_name`
+    appropriately, making this impossible). Hitting enter on a line with
+    the name of a valid color scheme will select that color scheme.
+
+Commands:                                                   *cspicker-commands*
+  *:ColorSchemePicker* [file]
+    Opens a new color scheme picker window. A simple wrapper around
+    cspicker#pick([file]).
+
+
+FAQ                                                              *cspicker-faq*
+=============================================================================
+
+Question:
+  Why isn't my cursor on my currently selected color scheme when I run
+  the ColorSchemePicker command?
+Answer:
+  This is likely because your currently selected color scheme does not
+  correctly set `g:colors_name`, making it impossible to
+  programmatically determine what color scheme is currently in effect.
+  This is because, at their core, color schemes are simple collections
+  of commands that are sourced, uniquely identified only by the
+  `g:colors_name` global variable, which it is each color scheme's
+  responsibility to set appropriatley.
+
+  When color schemes do not set `g:colors_name` with the correct value,
+  or at all, `cspicker#pick()` may not be able to begin with the
+  currently selected colorscheme (or revert to it on error).
+
+Question:
+  Why does exiting ColorSchemePicker without making a selection
+  sometimes not revert to my prevously selected colorscheme?
+Answer:
+  In some cases it cannot. Please refer to the answer to the previous
+  question.
+
+
+LICENSE                                                      *cspicker-license*
+=============================================================================
+
+vim-cspicker is released under the MIT license. For more details,
+please consult LICENSE.txt.
+
+
+CREDITS                                                      *cspicker-credits*
+=============================================================================
+
+vim-cspicker was originally inspirced by Reddit user u/kammerdiener's
+idea and associated Reddit post:
+
+  https://www.reddit.com/r/vim/comments/d4simm/a_color_scheme_picker/
+
+Source code for vim-cspicker is available on Github:
+
+  https://github.com/shwnchpl/vim-cspicker
+
+vim-cspicker is maintained by Shawn M. Chapla. Bug reports and feature
+requests can be directed to him either via Github or email:
+
+  shawn AT chapla DOT email
+
+
+=============================================================================
+vim:tw=78:ts=2:et:ft=help:norl:

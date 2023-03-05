@@ -1,0 +1,63 @@
+= vim-cspicker
+
+A simple color scheme picker for Vim/Neovim.
+
+
+== Installation
+
+Install locally by cloning this repo to the appropriate directory.
+
+Vim:
+
+[source,bash]
+----
+git clone --depth=1 https://github.com/shwnchpl/vim-cspicker \
+    ~/.vim/pack/vendor/start/vim-cspicker
+----
+
+Neovim:
+
+[source,bash]
+----
+git clone --depth=1 https://github.com/shwnchpl/vim-cspicker \
+    "${XDG_DATA_HOME:-~/.local/share}"/nvim/site/pack/vendor/start/vim-cspicker
+----
+
+Alternatively, install using some plugin manager. For example, to
+install using vim-plug:
+
+[source,vim]
+----
+Plug 'shwnchpl/vim-scpicker'
+----
+
+
+== Usage
+
+To use, simply execute the `ColorSchemePicker` command. If passed no
+argument, this command will open a window and populate an associated
+buffer with all available color schemes. If passed an argument, that
+argument will be interpreted as the name of a file to open and the
+picker buffer will be populated with its contents. Such a file should
+contain a list of color schemes, one per line.
+
+Switching between lines in the opened buffer will preview each color
+scheme (if the name on the line is a valid color scheme). Closing the
+buffer will revert to the original color scheme (if possible; poorly
+maintained color schemes do not set `g:colors_name` appropriately,
+making this impossible). Hitting enter on a line with the name of a
+valid color scheme will select that color scheme.
+
+
+== Licnese
+
+vim-cspicker is released under the MIT license. For more details,
+please consult LICENSE.txt.
+
+
+== Credits
+
+vim-cspicker was originally inspired by Reddit user
+https://www.reddit.com/user/kammerdiener/[u/kammerdiener]'s idea and
+associated Reddit
+https://www.reddit.com/r/vim/comments/d4simm/a_color_scheme_picker/[post].

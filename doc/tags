@@ -1,0 +1,10 @@
+:ColorSchemePicker	cspicker.txt	/*:ColorSchemePicker*
+cspicker#pick(...)	cspicker.txt	/*cspicker#pick(...)*
+cspicker-commands	cspicker.txt	/*cspicker-commands*
+cspicker-credits	cspicker.txt	/*cspicker-credits*
+cspicker-faq	cspicker.txt	/*cspicker-faq*
+cspicker-func	cspicker.txt	/*cspicker-func*
+cspicker-help	cspicker.txt	/*cspicker-help*
+cspicker-license	cspicker.txt	/*cspicker-license*
+cspicker-usage	cspicker.txt	/*cspicker-usage*
+cspicker.txt	cspicker.txt	/*cspicker.txt*
