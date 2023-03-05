@@ -33,16 +33,19 @@ Functions:                                                      *cspicker-func*
 Commands:                                                   *cspicker-commands*
   *:ColorSchemePicker* [file]
     Opens a new color scheme picker window. A simple wrapper around
-    cspicker#pick([file]).
+    `cspicker#pick([file])`.
 
 
 FAQ                                                              *cspicker-faq*
 =============================================================================
 
-Question:
+QUESTION
+
   Why isn't my cursor on my currently selected color scheme when I run
   the ColorSchemePicker command?
-Answer:
+
+ANSWER
+
   This is likely because your currently selected color scheme does not
   correctly set `g:colors_name`, making it impossible to
   programmatically determine what color scheme is currently in effect.
@@ -55,12 +58,57 @@ Answer:
   or at all, `cspicker#pick()` may not be able to begin with the
   currently selected colorscheme (or revert to it on error).
 
-Question:
+-----------------------------------------------------------------------------
+
+QUESTION
+
   Why does exiting ColorSchemePicker without making a selection
   sometimes not revert to my prevously selected colorscheme?
-Answer:
+
+ANSWER
+
   In some cases it cannot. Please refer to the answer to the previous
   question.
+
+-----------------------------------------------------------------------------
+
+QUESTION
+
+  Why does my color scheme look different when I pick it with the
+  picker than it does when I set it from my .vimrc?
+
+ANSWER
+
+  Many times, this is a result of color schemes being "incomplete."
+  Since a color scheme is really just a collection of commands that
+  effect how content is displayed, there can be cases where certain
+  color schemes configure the appearance of various display attributes
+  while other color schemes neglect to explicitly do so. The result
+  of this is that a poorly implemented or maintained color scheme
+  may look different when it is applied following another color
+  scheme.
+
+  A quick and dirty work around for this is to figure out which color
+  schemes need to be applied in order (usually it's only the one or
+  two immediately before/after the color scheme, as the appear in the
+  picker buffer) and to apply those color schemes as well in your
+  .vimrc file, prior to applying the final color scheme.
+
+  A better solution is to figure out what, exactly, is missing from
+  the "incomplete" color scheme, to write a patch with those
+  additional components, and to upstream the patch, if possible, or
+  if not to create a fork with the new functionality and to maintain
+  this fork separately. This is often less work than it might sound
+  like; there are often only a handful of minor changes that need to
+  be made in order to get things looking nice.
+
+  A third alternative is to figure out what is "missing" from the
+  color scheme you would wish to apply and to simply apply just those
+  commands in your .vimrc before applying the color scheme itself.
+
+  In any case, this is unfortunately an issue inherent to Vim/Neovim
+  color schemes and it isn't something that can easily be addressed by
+  this plugin.
 
 
 LICENSE                                                      *cspicker-license*
